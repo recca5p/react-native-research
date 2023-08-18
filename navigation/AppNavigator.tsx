@@ -11,6 +11,8 @@ const Stack = createNativeStackNavigator();
 function AppNavigator() {
   const { state } = useAuth();
 
+  state.isLoading = false
+
   return (
     <NavigationContainer>
       <Stack.Navigator>

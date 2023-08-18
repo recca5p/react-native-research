@@ -34,14 +34,14 @@ export const AuthProvider: React.FC = ({ children }: any) => {
     () => ({
       signIn: async (data: { username: string; password: string }) => {
         // In a production app, you would send data to the server and handle token
-        // dispatch({ type: 'SIGN_IN', token: 'dummy-auth-token' });
+        dispatch({ type: 'SIGN_IN', token: 'dummy-auth-token' });
       },
       signOut: () => {
-        // dispatch({ type: 'SIGN_OUT' });
+        dispatch({ type: 'SIGN_OUT' });
       },
       signUp: async (data: any) => {
         // Similar to signIn, you would handle token and user data
-        // dispatch({ type: 'SIGN_IN', token: 'dummy-auth-token' });
+        dispatch({ type: 'SIGN_IN', token: 'dummy-auth-token' });
       },
       state,
       dispatch,
