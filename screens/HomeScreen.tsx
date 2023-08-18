@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Text, Button } from 'react-native';
-import AuthContext from '../components/auth/AuthContext';
+import { AuthContext } from '../context/AuthContext';
 
 function HomeScreen() {
-  const { signOut } = React.useContext(AuthContext);
+  const { signOut } = useContext(AuthContext);
 
   return (
     <View>

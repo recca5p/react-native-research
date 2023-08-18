@@ -4,7 +4,7 @@ import { View, Text } from 'react-native';
 function SplashScreen() {
   return (
     <View>
-      <Text>Loading...</Text>
+      <Text>Loading... 123</Text>
     </View>
   );
 }

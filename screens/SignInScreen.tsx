@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import { View, TextInput, Button } from 'react-native';
-import AuthContext from'../components/auth/AuthContext';
+import { AuthContext } from '../context/AuthContext';
 
 function SignInScreen() {
-  const [username, setUsername] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const { signIn } = React.useContext(AuthContext);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const { signIn } = useContext(AuthContext);
 
   return (
     <View>
