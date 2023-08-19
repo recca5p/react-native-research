@@ -146,7 +146,6 @@ export default function App() {
           <NavigationContainer theme={isDark ? DarkTheme : DefaultTheme}>
             <AppNavigator toggleTheme={toggleTheme} />
           </NavigationContainer>
-          {/* <ThemeToggleButton isDark={isDark} toggleTheme={toggleTheme} /> */}
         </AuthProvider>
       </PaperProvider>
     </ThemeProvider>

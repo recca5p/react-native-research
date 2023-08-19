@@ -1,16 +1,17 @@
-import React, { useContext } from 'react';
-import { View, Text, Button } from 'react-native';
+
+import { View} from 'react-native';
+import { Text } from 'react-native-paper';
 import { AuthContext } from '../context/AuthContext';
+import React, { useContext } from 'react';
+import ThemeSwitchButton from '../components/ThemeSwitchButton';
 
-function HomeScreen() {
-  const { signOut } = useContext(AuthContext);
+const HomeScreen = () => {
 
-  return (
-    <View>
-      <Text>Signed in!</Text>
-      <Button title="Sign out" onPress={signOut} />
-    </View>
-  );
-}
+    return (
+        <View>
+            <Text>This is the Home Screen</Text>
+        </View>
+    );
+};
 
 export default HomeScreen;

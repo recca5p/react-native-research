@@ -1,23 +1,41 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button, Divider, IconButton, Menu } from 'react-native-paper';
+import { AuthContext } from '../context/AuthContext';
+import { AntDesign } from '@expo/vector-icons'; // Import the icon library you're using
+import ThemeSwitchButton from './ThemeSwitchButton';
 
-const AccountMenuList = () => {
-    const [visible, setVisible] = React.useState(false);
+const AccountMenuList = ({toggleTheme}: any) => {
+    const [menuVisible, setMenuVisible] = React.useState(false);
 
-    const openMenu = () => setVisible(true);
-  
-    const closeMenu = () => setVisible(false);
-  return (
-    <Menu 
-        visible={visible}
-        onDismiss={closeMenu}
-        anchor={<Button onPress={openMenu}>Show menu</Button>}>
-        <Menu.Item onPress={() => {}} title="Item 1" />
-        <Menu.Item onPress={() => {}} title="Item 2" />
-        <Divider />
-        <Menu.Item onPress={() => {}} title="Item 3" />
-    </Menu>
-  );
+    const openMenu = () => setMenuVisible(true);
+    const closeMenu = () => setMenuVisible(false);
+
+    const { signOut } = useContext(AuthContext);
+
+    return (
+        <Menu
+            visible={menuVisible}
+            onDismiss={closeMenu}
+            anchor={<IconButton onPress={openMenu} icon={'dots-vertical'}/>}
+        >
+            <Menu.Item
+                leadingIcon={'logout'}
+                onPress={signOut}
+                title="Sign Out"
+            />
+            <Menu.Item 
+                leadingIcon={'theme-light-dark'}
+                title="Theme"
+                onPress={toggleTheme}
+            />
+            <Divider />
+            <Menu.Item
+                leadingIcon={'close'}
+                onPress={closeMenu}
+                title="Close"
+            />
+        </Menu>
+    );
 };
 
 export default AccountMenuList;

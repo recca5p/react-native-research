@@ -30,17 +30,17 @@ function AppNavigator({toggleTheme}) {
               title: 'Sign in',
               animationTypeForReplace: state.isSignout ? 'pop' : 'push',
               headerRight: () => (
-                <ThemeSwitchButton isDark={true} toggleTheme={toggleTheme} />
+                <ThemeSwitchButton toggleTheme={toggleTheme} />
               ),
             }}
           />
         ) : (
           <Stack.Screen 
-          name="Home" 
+          name="Home"
           component={HomeScreen} 
           options={{
             headerRight: () => (
-              <AccountMenuList />
+              <AccountMenuList toggleTheme={toggleTheme}/>
             ),
           }}
           />
