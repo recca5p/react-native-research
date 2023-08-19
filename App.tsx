@@ -11,6 +11,7 @@ import HomeScreen from './screens/HomeScreen';
 import SignInScreen from './screens/SignInScreen';
 import SplashScreen from './screens/SplashScreen';
 import { ThemeProvider } from './context/ThemeContext';
+import ThemeToggleButton from './components/ThemeSwitchButton';
 
 
 export const CLightTheme = {
@@ -114,7 +115,7 @@ export default function App() {
         isSignout: false,
         userToken: null
     });
-    const [isDark, setIsDark] = useState(false)
+    const [isDark, setIsDark] = useState(true)
 
     useEffect(() => {
         const bootstrapAsync = async () => {
@@ -133,13 +134,19 @@ export default function App() {
         bootstrapAsync();
     }, []);
 
+    
+    const toggleTheme = () => {
+        setIsDark(!isDark);
+    };
+
     return (
       <ThemeProvider>
       <PaperProvider theme={isDark ? CDarkTheme : CLightTheme}>
         <AuthProvider>
           <NavigationContainer theme={isDark ? DarkTheme : DefaultTheme}>
-            <AppNavigator />
+            <AppNavigator toggleTheme={toggleTheme} />
           </NavigationContainer>
+          {/* <ThemeToggleButton isDark={isDark} toggleTheme={toggleTheme} /> */}
         </AuthProvider>
       </PaperProvider>
     </ThemeProvider>

@@ -6,13 +6,17 @@ import HomeScreen from '../screens/HomeScreen';
 import SignInScreen from '../screens/SignInScreen';
 import { useAuth } from '../context/AuthContext';
 import { Button } from 'react-native';
+import ThemeSwitchButton from '../components/ThemeSwitchButton';
+import AccountMenuList from '../components/AccountMenuList';
 
 const Stack = createNativeStackNavigator();
 
-function AppNavigator() {
+function AppNavigator({toggleTheme}) {
   const { state } = useAuth();
 
   state.isLoading = false
+
+  const [isDark, setIsDark] = useState(true);
 
   return (
       <Stack.Navigator>
@@ -25,17 +29,20 @@ function AppNavigator() {
             options={{
               title: 'Sign in',
               animationTypeForReplace: state.isSignout ? 'pop' : 'push',
+              headerRight: () => (
+                <ThemeSwitchButton isDark={true} toggleTheme={toggleTheme} />
+              ),
             }}
           />
         ) : (
           <Stack.Screen 
           name="Home" 
           component={HomeScreen} 
-        //   options={{
-        //     headerRight: () => (
-        //         <ThemeSwitchButton/>
-        //     ),
-        //   }}
+          options={{
+            headerRight: () => (
+              <AccountMenuList />
+            ),
+          }}
           />
         )}
       </Stack.Navigator>

@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import { AuthContext } from '../context/AuthContext';
-import { Button, TextInput, Text,Surface } from 'react-native-paper';
+import { Button, TextInput, Text } from 'react-native-paper';
 
 function SignInScreen() {
   const [username, setUsername] = useState('');
@@ -11,7 +11,7 @@ function SignInScreen() {
   const { signIn } = useContext(AuthContext);
 
   return (
-    <Surface style={styles.container}>
+    <View style={styles.container}>
       <Text variant="headlineSmall">Sign In</Text>
       <TextInput
         placeholder="Username"
@@ -35,7 +35,7 @@ function SignInScreen() {
       <Button mode="contained" onPress={() => signIn({ username, password })}>
         Sign In
       </Button>
-    </Surface>
+    </View>
   );
 }
 const styles = StyleSheet.create({
