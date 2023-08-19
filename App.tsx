@@ -3,15 +3,10 @@ import {AuthProvider} from './context/AuthContext';
 import {authReducer} from './redux/reducers/authReducer';
 import AppNavigator from './navigation/AppNavigator';
 import {PaperProvider} from 'react-native-paper';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {Button} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {DarkTheme, DefaultTheme, NavigationContainer} from '@react-navigation/native';
-import HomeScreen from './screens/HomeScreen';
-import SignInScreen from './screens/SignInScreen';
-import SplashScreen from './screens/SplashScreen';
-import { ThemeProvider } from './context/ThemeContext';
-import ThemeToggleButton from './components/ThemeSwitchButton';
+import { I18nextProvider } from 'react-i18next';
+import i18n from './i18n';
 
 
 export const CLightTheme = {
@@ -140,14 +135,14 @@ export default function App() {
     };
 
     return (
-      <ThemeProvider>
       <PaperProvider theme={isDark ? CDarkTheme : CLightTheme}>
         <AuthProvider>
           <NavigationContainer theme={isDark ? DarkTheme : DefaultTheme}>
-            <AppNavigator toggleTheme={toggleTheme} />
+            <I18nextProvider i18n={i18n}>
+                <AppNavigator toggleTheme={toggleTheme} />
+            </I18nextProvider>
           </NavigationContainer>
         </AuthProvider>
       </PaperProvider>
-    </ThemeProvider>
     );
 }

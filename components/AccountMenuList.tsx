@@ -1,8 +1,7 @@
 import React, { useContext } from 'react';
 import { Button, Divider, IconButton, Menu } from 'react-native-paper';
 import { AuthContext } from '../context/AuthContext';
-import { AntDesign } from '@expo/vector-icons'; // Import the icon library you're using
-import ThemeSwitchButton from './ThemeSwitchButton';
+
 
 const AccountMenuList = ({toggleTheme}: any) => {
     const [menuVisible, setMenuVisible] = React.useState(false);

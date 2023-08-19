@@ -1,15 +1,16 @@
 
 import { View} from 'react-native';
 import { Text } from 'react-native-paper';
-import { AuthContext } from '../context/AuthContext';
 import React, { useContext } from 'react';
-import ThemeSwitchButton from '../components/ThemeSwitchButton';
+import { useTranslation } from 'react-i18next';
+
 
 const HomeScreen = () => {
+  const { t } = useTranslation(); // Use the useTranslation hook
 
     return (
         <View>
-            <Text>This is the Home Screen</Text>
+            <Text>{t('welcome')}</Text>
         </View>
     );
 };

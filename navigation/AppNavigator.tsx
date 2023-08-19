@@ -11,7 +11,7 @@ import AccountMenuList from '../components/AccountMenuList';
 
 const Stack = createNativeStackNavigator();
 
-function AppNavigator({toggleTheme}) {
+export default function AppNavigator({toggleTheme}: any) {
   const { state } = useAuth();
 
   state.isLoading = false
@@ -49,4 +49,3 @@ function AppNavigator({toggleTheme}) {
   );
 }
 
-export default AppNavigator;
